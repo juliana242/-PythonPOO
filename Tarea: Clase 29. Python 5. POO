@@ -1,3 +1,5 @@
+# Se piden al usuario los datos para individualizar
+
 class Mascota:
     def __init__(self, nombre, raza, edad, tamaño):
         self.nombre = nombre
@@ -5,34 +7,33 @@ class Mascota:
         self.edad = edad
         self.tamaño = tamaño
 
-# Se crea una lista para almacenar las mascotas
-mascotas = []
+class Sistema:
+    def __init__(self):
+        self.mascotas = []
 
-# Función para agregar una nueva mascota
-def agregar_mascota():
-    nombre = input("Ingrese el nombre de la mascota: ")
-    raza = input("Ingrese la raza de la mascota: ")
-    edad = input("Ingrese la edad de la mascota: ")
-    tamaño = input("Ingrese el tamaño de la mascota (chico, mediano o grande): ")
+    def agregar_mascota(self):
+        nombre = input("Ingrese el nombre de la mascota: ")
+        raza = input("Ingrese la raza de la mascota: ")
+        edad = input("Ingrese la edad de la mascota: ")
+        tamaño = input("Ingrese el tamaño de la mascota (chico, mediano o grande): ")
 
-    # Crea una instancia de Mascota
-    mascota = Mascota(nombre, raza, edad, tamaño)
+        mascota = Mascota(nombre, raza, edad, tamaño)
+        self.mascotas.append(mascota)
+        print("Mascota agregada con éxito.")
 
-    # Agrega la mascota al listado
-    mascotas.append(mascota)
-    print("Mascota agregada con éxito.")
+    def mostrar_mascotas(self):
+        if len(self.mascotas) == 0:
+            print("No se han registrado mascotas.")
+        else:
+            for mascota in self.mascotas:
+                print("Nombre:", mascota.nombre)
+                print("Raza:", mascota.raza)
+                print("Edad:", mascota.edad)
+                print("Tamaño:", mascota.tamaño)
+                print("-------------------------")
 
-# Función para mostrar todas las mascotas almacenadas
-def mostrar_mascotas():
-    if len(mascotas) == 0:
-        print("No se han registrado mascotas.")
-    else:
-        for mascota in mascotas:
-            print("Nombre:", mascota.nombre)
-            print("Raza:", mascota.raza)
-            print("Edad:", mascota.edad)
-            print("Tamaño:", mascota.tamaño)
-            print("-------------------------")
+# Se crea una instancia del sistema de la veterinaria
+sistema_veterinaria = Sistema()
 
 # Menú principal
 while True:
@@ -42,9 +43,9 @@ while True:
     opcion = input("Seleccione una opción: ")
 
     if opcion == "1":
-        agregar_mascota()
+        sistema_veterinaria.agregar_mascota()
     elif opcion == "2":
-        mostrar_mascotas()
+        sistema_veterinaria.mostrar_mascotas()
     elif opcion == "3":
         break
     else:
