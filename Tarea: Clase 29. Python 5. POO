@@ -1,0 +1,51 @@
+class Mascota:
+    def __init__(self, nombre, raza, edad, tamaño):
+        self.nombre = nombre
+        self.raza = raza
+        self.edad = edad
+        self.tamaño = tamaño
+
+# Se crea una lista para almacenar las mascotas
+mascotas = []
+
+# Función para agregar una nueva mascota
+def agregar_mascota():
+    nombre = input("Ingrese el nombre de la mascota: ")
+    raza = input("Ingrese la raza de la mascota: ")
+    edad = input("Ingrese la edad de la mascota: ")
+    tamaño = input("Ingrese el tamaño de la mascota (chico, mediano o grande): ")
+
+    # Crea una instancia de Mascota
+    mascota = Mascota(nombre, raza, edad, tamaño)
+
+    # Agrega la mascota al listado
+    mascotas.append(mascota)
+    print("Mascota agregada con éxito.")
+
+# Función para mostrar todas las mascotas almacenadas
+def mostrar_mascotas():
+    if len(mascotas) == 0:
+        print("No se han registrado mascotas.")
+    else:
+        for mascota in mascotas:
+            print("Nombre:", mascota.nombre)
+            print("Raza:", mascota.raza)
+            print("Edad:", mascota.edad)
+            print("Tamaño:", mascota.tamaño)
+            print("-------------------------")
+
+# Menú principal
+while True:
+    print("1. Agregar mascota")
+    print("2. Mostrar mascotas")
+    print("3. Salir")
+    opcion = input("Seleccione una opción: ")
+
+    if opcion == "1":
+        agregar_mascota()
+    elif opcion == "2":
+        mostrar_mascotas()
+    elif opcion == "3":
+        break
+    else:
+        print("Opción inválida. Por favor, seleccione nuevamente.")
